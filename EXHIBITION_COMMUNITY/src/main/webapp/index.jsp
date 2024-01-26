@@ -1,0 +1,460 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인페이지</title>
+
+    <!-- CDN을 사용해서 부트 스트랩 라이브러리 등록 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
+    <style>
+        @font-face {
+            font-family: 'Pretendard-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        * {
+            list-style: none;
+            text-decoration: none;
+            font-family: "Pretendard-Regular";
+        }
+
+        a {
+            text-decoration-line: none;
+        }
+
+        #clear {
+            clear: both;
+        }
+
+        .headertop {
+            width: 100%;
+            height: 20px;
+            background-color: #1D375F;
+            margin: 0 auto;
+
+        }
+
+        header {
+            position: relative;
+            width: 1240px;
+            height: 120px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        .logo {
+            width: 300px;
+            height: 100px;
+            display: flex;
+            float: left;
+            align-items: center;
+        }
+
+        .menubar {
+            margin: 0 auto;
+            float: left;
+            margin-top: 40px;
+            font-size: 18px;
+
+        }
+
+        .menubar ul {
+            height: 50px;
+            list-style: none;
+        }
+
+        .menubar li {
+            float: left;
+        }
+
+        .menubar a {
+            color: black;
+            display: block;
+            font-weight: normal;
+            line-height: 49px;
+            padding: 1px 25px;
+            text-align: center;
+        }
+
+        .menubar li a:hover,
+        .menubar ul li:hover a {
+            color: #FFA16D;
+        }
+
+        .menubar li:hover ul {
+            display: block;
+        }
+
+        .menubar li:hover li a {
+            background: none;
+        }
+
+        .menubar li ul {
+            background: #1D375F;
+            display: none;
+            height: auto;
+            position: absolute;
+            z-index: 999;
+        }
+
+        .menubar li li a,
+        .menubar li li {
+            background: #1D375F;
+            display: block;
+            float: none;
+            min-width: 135px;
+        }
+
+        .menubar li ul a {
+            display: block;
+            height: 50px;
+            font-size: 14px;
+            font-style: normal;
+            padding: 0px 10px 0px 15px;
+            text-align: left;
+        }
+
+        .menubar li ul a:hover,
+        .menubar li ul li:hover a {
+            background: #636363;
+            border: 0px;
+            color: #ffffff;
+        }
+
+        .login {
+            float: right;
+            margin-right: 20px;
+            margin-top: 55px;
+            font-size: 15px;
+            font-family: "Pretendard-Regular";
+        }
+
+        .login a {
+            color: #000000;
+        }
+
+        .login a:hover {
+            color: #a5a5a5;
+        }
+
+        main {
+            position: relative;
+            width: 1240px;
+            height: 830px;
+            margin: 0 auto;
+            text-align: right;
+        }
+
+        .notice {
+            margin-top: 20px;
+        }
+
+        .exhibition {
+            margin-top: 40px;
+            width: 620px;
+            height: 340px;
+            padding-right: 10px;
+            float: left;
+        }
+
+        .e1 {
+            float: left;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .slider {
+            padding-top: 10px;
+            width: 610px;
+            height: 310px;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+            /* 현재 슬라이드 오른쪽에 위치한 나머지 슬라이드 들이 보이지 않도록 가림 */
+        }
+
+        .slider input[type=radio] {
+            display: none;
+        }
+
+        ul.imgs {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            
+        }
+
+        ul.imgs li {
+            position: absolute;
+            left: 610px;
+            transition-delay: 1s;
+            /* 새 슬라이드가 이동해 오는 동안 이전 슬라이드 이미지가 배경이 보이도록 지연 */
+
+            padding: 0;
+            margin: 0;
+        }
+
+        .bullets {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0px;
+            z-index: 2;
+        }
+
+        .bullets label {
+            display: inline-block;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.55);
+            border: 2px solid rgba(73, 73, 73, 0.55);
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* 현재 선택된 불릿 배경 흰색으로 구분 표시 */
+        .slider input[type=radio]:nth-child(1):checked~.bullets>label:nth-child(1) {
+            background-color: rgba(73, 73, 73, 0.55);
+        }
+
+        .slider input[type=radio]:nth-child(2):checked~.bullets>label:nth-child(2) {
+            background-color: rgba(73, 73, 73, 0.55);
+        }
+
+        .slider input[type=radio]:nth-child(3):checked~.bullets>label:nth-child(3) {
+            background-color: rgba(73, 73, 73, 0.55);
+        }
+
+        .slider input[type=radio]:nth-child(1):checked~ul.imgs>li:nth-child(1) {
+            left: 0;
+            transition: 0.5s;
+            z-index: 1;
+        }
+
+        .slider input[type=radio]:nth-child(2):checked~ul.imgs>li:nth-child(2) {
+            left: 0;
+            transition: 0.5s;
+            z-index: 1;
+        }
+
+        .slider input[type=radio]:nth-child(3):checked~ul.imgs>li:nth-child(3) {
+            left: 0;
+            transition: 0.5s;
+            z-index: 1;
+        }
+
+        .review {
+            margin-top: 40px;
+            margin-left: 620px;
+            padding-left: 10px;
+            width: 620px;
+            height: 170px;
+            /*border: 1px solid rgb(155, 155, 155);*/
+        }
+
+        .accompany {
+            margin-left: 620px;
+            padding-left: 10px;
+            width: 620px;
+            height: 170px;
+            /*border: 1px solid rgb(155, 155, 155);*/
+        }
+
+        .r1,
+        .a1 {
+            font-size: 18px;
+            font-weight: bold;
+            float: left;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        .e2 {
+            font-size: 15px;
+            float: right;
+            margin-top: 7px;
+            color: #636363;
+        }
+
+        .e2:hover {
+            color: #a5a5a5;
+        }
+
+        .reviewtb {
+            width: 610px;
+            border-top: 1px solid #adadad;
+            border-collapse: collapse;
+        }
+
+        .reviewtb th,
+        td {
+            border-bottom: 1px solid #adadad;
+            padding: 2px;
+        }
+
+        .reviewtb {
+            width: 610px;
+            border-top: 1px solid #adadad;
+            border-collapse: collapse;
+        }
+
+        .reviewtb th,
+        td {
+            border-bottom: 1px solid #adadad;
+            padding: 2px;
+        }
+
+        table a {
+            color: #000000;
+        }
+
+        footer {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            margin: 0 auto;
+            text-align: left;
+            color: #ffffff;
+            background-color: #1D375F;
+        }
+
+        .address {
+            width: 1240px;
+            margin: 0 auto;
+            padding-top: 30px;
+        }
+
+        .ad1 {
+            color: #cbd7e9;
+        }
+
+        .ad2 {
+            color: #617aa0;
+            font-size: 14px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="headertop"></div>
+    <header>
+        <div class="logo">
+            <a href="index.jsp"><img src="img/logo.png"></a>
+        </div>
+        <div class="menubar">
+            <ul class="menuItem">
+                <li><a href="exhibition.html">전시</a></li>
+                <li>
+                    <a href="community_review.html">커뮤니티</a>
+                    <ul>
+                        <li><a href="community_review.html">관람 후기</a></li>
+                        <li><a href="community_accompany.html">관람 동행</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="login">
+            <ul>
+                <li><a href="LoginForm.jsp">로그인</a></li>
+            </ul>
+        </div>
+
+        <div id="clear"></div>
+
+    </header>
+
+    <main>
+        <div class="notice">
+            <a href="#"><img src="img/banner/1.png"></a>
+        </div>
+        <div class="exhibition">
+            <a class="e1">진행 중 전시</a>
+            <a class="e2" href="exhibition.html">더보기</a>
+            <div class="slider">
+                <input type="radio" name="slide" id="slide1" checked>
+                <input type="radio" name="slide" id="slide2">
+                <input type="radio" name="slide" id="slide3">
+                <ul id="imgholder" class="imgs">
+                    <li><a href="#"><img src="img/exhibition_preview/1.png"></a></li>
+                    <li><a href="#"><img src="img/exhibition_preview/2.png"></a></li>
+                    <li><a href="exhinition-gu.html"><img src="img/exhibition_preview/3.png"></a></li>
+                </ul>
+                <div class="bullets">
+                    <label for="slide1">&nbsp;</label>
+                    <label for="slide2">&nbsp;</label>
+                    <label for="slide3">&nbsp;</label>
+                </div>
+            </div>
+        </div>
+        <div class="review">
+            <a class="r1">관람 후기</a>
+            <a class="e2" href="community_review.html">더보기</a>
+            <table class="reviewtb">
+                <tr>
+                    <td style="text-align:left; border-right:none"><a href="cr_detail.html">미스치프 전시 다녀왔습니다.</a></td>
+                    <td style="color: #868686; text-align:right; border-left:none">2024-01-25</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left; border-right:none"><a href="#">위너브러더스 100주년 후기!</a></td>
+                    <td style="color: #868686; text-align:right; border-left:none">2024-01-23</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left; border-right:none"><a href="#">서울시립미술관 구본창의 항해 관람 후기</a></td>
+                    <td style="color: #868686; text-align:right; border-left:none">2024-01-22</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left; border-right:none"><a href="#">미셸 들라크루아 전시 보고 왔어요</a></td>
+                    <td style="color: #868686; text-align:right; border-left:none">2024-01-22</td>
+                </tr>
+            </table>
+        </div>
+        <div class="accompany">
+            <a class="a1">관람 동행</a>
+            <a class="e2" href="community_accompany.html">더보기</a>
+            <table class="reviewtb">
+                <tr>
+                    <td style="text-align:left; border-right:none"><a href="#">[서울시립미술관] 구본창의 항해 | 여성 1인 11:00</a></td>
+                    <td style="text-align:right; border-left:none">2024-01-30</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left; border-right:none"><a href="#">[MUSEUM 209] 브라이언 레 : LOVE STORIES | 남성
+                            1인 13:00</a></td>
+                    <td style="text-align:right; border-left:none">2024-01-25</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left; border-right:none"><a href="#">[웩사] 2nd Birthday | 여성 1인 12:00</a></td>
+                    <td style="text-align:right; border-left:none">2024-01-27</td>
+                </tr>
+            </table>
+        </div>
+    </main>
+    <div id="clear"></div>
+    <footer>
+        <div class="address">
+            <a class="ad1" href="#">공지사항</a>
+            <hr>
+            <a class="ad2" href="#">필독 공지</a>
+            <a class="ad2" href="#">이용약관</a>
+            <a class="ad2" href="#">개인정보처리방침</a>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        @font-face {
+            font-family: 'Pretendard-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        * {
+            font-family: "Pretendard-Regular";
+        }
+
+        a {
+            text-decoration-line: none;
+        }
+
+        .loginbox {
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            border: 1px solid #1D375F;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 400px;
+            height: 500px;
+            text-align: center;
+        }
+
+        .login-header {
+            color: #1D375F;
+            font-size: 25px;
+            padding-top: 30PX;
+        }
+
+        .login-body {
+            margin-top: 90px;
+            padding: 20px;
+        }
+
+        .login-input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 18px;
+        }
+
+        .login-button {
+            background-color: #1D375F;
+            color: #fff;
+            padding: 10px 120px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .login-button:hover {
+            background-color: #0F1F3A;
+        }
+
+        .signup a {
+            color: #636363;
+            font-size: 15px;
+        }
+
+        .signup a:hover {
+            border-bottom: 1px solid #636363;;
+        }
+    </style>
+</head>
+
+<body>
+<div class="loginbox">
+    <div class="login-container">
+        <div class="login-header">
+            <h2>LOGIN</h2>
+        </div>
+        <div class="login-body">
+            <form>
+                <input type="text" class="login-input" placeholder="아이디" required>
+                <input type="password" class="login-input" placeholder="비밀번호" required>
+                <button type="submit" class="login-button">로그인</button>
+            </form>
+            <p class="signup"><a href="#">회원가입</a></p>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

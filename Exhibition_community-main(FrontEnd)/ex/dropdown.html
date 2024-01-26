@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            text-decoration: none;
+            letter-spacing: 0px;
+        }
+
+        .wrap {
+            width: 100%;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .menubar {
+            width: 1240px;
+            margin: 0 auto;
+            border: none;
+            
+            overflow: hidden;
+        }
+
+        .menuLogo {
+            width: 90px;
+            height: 90px;
+            
+            float: left;
+        }
+
+        .menuItem {
+            float: right;
+        }
+
+        .menubar ul {
+            height: 50px;
+            list-style: none;
+        }
+
+        .menubar li {
+            float: left;
+        }
+
+        .menubar a {
+            color: #000000;
+            display: block;
+            font-weight: normal;
+            line-height: 49px;
+            padding: 1px 25px;
+            text-align: center;
+        }
+
+        .menubar li a:hover,
+        .menubar ul li:hover a {
+            background: #fa7f3c;
+            color: #FFFFFF;
+        }
+
+        .menubar li:hover ul {
+            display: block;
+        }
+
+        .menubar li:hover li a {
+            background: none;
+        }
+
+        .menubar li ul {
+            background: #1D375F;
+            display: none;
+            height: auto;
+            position: absolute;
+            z-index: 999;
+        }
+
+        .menubar li li a,
+        .menubar li li {
+            background: #1D375F;
+            display: block;
+            float: none;
+            min-width: 80px;
+        }
+
+        .menubar li ul a {
+            display: block;
+            height: 50px;
+            font-size: 12px;
+            font-style: normal;
+            padding: 0px 10px 0px 15px;
+            text-align: center;
+        }
+
+        .menubar li ul a:hover,
+        .menubar li ul li:hover a {
+            background: #636363;
+            border: 0px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <div class="wrap">
+            <div class="menubar">
+                <ul class="menuItem">
+                    <li><a href="#">전시</a></li>
+                    <li>
+                        <a href="#">커뮤니티</a>
+                        <ul>
+                            <li><a href="#">관람 후기</a></li>
+                            <li><a href="#">관람 동행</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

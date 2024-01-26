@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .listbox {
+            width: 1150px;
+            margin: 0 auto;           
+        }
+
+        .listbox>ul {
+            padding-left: 0; 
+        }
+
+        .listTable {
+            padding-left: 0;
+        }
+
+        .listbox>ul>li:first-child {
+            
+            text-align: center;
+            font-size: 18pt;
+            height: 60px;
+            vertical-align: middle;
+            line-height: 35px;
+        }
+
+        .listTable>li:first-child>ul>li {
+            border-top: 1px solid silver;;
+            background-color: #ebebeb;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .listTable>li>ul {
+            clear: both;
+            padding: 0px auto;
+            position: relative;
+            min-width: 40px;
+            padding-left: 0;
+        }
+
+        .listTable>li>ul>li {
+            float: left;
+            font-size: 10pt;
+            border-bottom: 1px solid silver;
+            vertical-align: baseline;
+            
+        }
+
+        /*번호 열 크기*/
+        .listTable>li>ul>li:first-child {
+            width: 10%;
+        }
+
+        /*제목 열 크기*/
+        .listTable>li>ul>li:first-child+li {
+            width: 45%;
+        }
+
+        /*작성자 열 크기*/
+        .listTable>li>ul>li:first-child+li+li {
+            width: 20%;
+        }
+
+        /*날짜 열 크기*/
+        .listTable>li>ul>li:first-child+li+li+li {
+            width: 15%;
+        }
+
+        /*조회수 열 크기*/
+        .listTable>li>ul>li:first-child+li+li+li+li {
+            width: 10%;
+        }
+
+        .left {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="listbox">
+        <ul>
+            <li>
+                <ul class="listTable">
+                    <li>
+                        <ul>
+                            <li>번호</li>
+                            <li>제목</li>
+                            <li>작성자</li>
+                            <li>날짜</li>
+                            <li>조회수</li>
+                        </ul>
+                    <li>
+                        <ul>
+                            <li>10</li>
+                            <li class="left">미스치프 전시 다녀왔습니다.</li>
+                            <li>2024-01-25</li>
+                            <li>냥냥</li>
+                            <li>0</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <ul>
+                            <li>9</li>
+                            <li class="left">위너브러더스 100주년 후기!</li>
+                            <li>2024-01-23</li>
+                            <li>가나다라</li>
+                            <li>0</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <ul>
+                            <li>8</li>
+                            <li class="left">서울시립미술관 구본창의 항해 관람 후기</li>
+                            <li>2024-01-22</li>
+                            <li>뿌링클</li>
+                            <li>0</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <ul>
+                            <li>7</li>
+                            <li class="left">미셸 들라크루아 전시 보고 왔어요</li>
+                            <li>2024-01-22</li>
+                            <li>예술인</li>
+                            <li>0</li>
+                        </ul>
+                    <li>
+
+                    <li>
+                        <ul>
+                            <li>6</li>
+                            <li class="left">부산 요시고 사진전</li>
+                            <li>2024-01-22</li>
+                            <li>아아아</li>
+                            <li>0</li>
+                        </ul>
+                    <li>
+
+                    <li>
+                        <ul>
+                            <li>5</li>
+                            <li class="left">브라이언 레 - LOVE STORIES</li>
+                            <li>2024-01-21</li>
+                            <li>abcd</li>
+                            <li>0</li>
+                        </ul>
+                    <li>
+
+                    <li>
+                        <ul>
+                            <li>4</li>
+                            <li class="left">인트리깅</li>
+                            <li>2024-01-21</li>
+                            <li>1일1전시</li>
+                            <li>0</li>
+                        </ul>
+                    <li>
+
+                    <li>
+                        <ul>
+                            <li>3</li>
+                            <li class="left">녹색갈증 전시 관람 후기</li>
+                            <li>2024-01-21</li>
+                            <li>김김김</li>
+                            <li>0</li>
+                        </ul>
+                    <li>
+
+                    <li>
+                        <ul>
+                            <li>2</li>
+                            <li class="left">우연과 필연</li>
+                            <li>2024-01-21</li>
+                            <li>나나나</li>
+                            <li>0</li>
+                        </ul>
+                    <li>
+
+                    <li>
+                        <ul>
+                            <li>1</li>
+                            <li class="left">누군가의 이야기 보고왔습니다.</li>
+                            <li>2024-01-21</li>
+                            <li>경경경</li>
+                            <li>0</li>
+                        </ul>
+                    <li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

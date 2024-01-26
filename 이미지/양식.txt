@@ -1,0 +1,38 @@
+1150px
+
+padding 50px
+1060
+
+제목
+.listbox>ul>li:first-child {
+
+            text-align: center;
+            height: 60px;
+            vertical-align: middle;
+            line-height: 40px;
+        }
+border-top: 1px solid silver;
+            background-color: #eeeeee;
+
+날짜 - 작성자 위치 변경
+            <div class="commentcnt"><h5>댓글(1)</h5></div>
+            <div class="commentwriter"><h6>ABC</h6></div>
+            <div class="commentcontent"><h6>댓글 내용입니다.</h6></div>
+padding-left: 20px;
+
+ onclick = "location.href = '#'
+[출처] [ HTML ] <button> 버튼에 링크걸기 / HTML 버튼 링크 거는 방법|작성자 알통몬
+
+03. 설계
+
+4. 설계 분석
+4-1 ERD
+4-2 사이트맵
+4-3 스토리보드
+4-4 UI 설계
+4-5 주요 소스코드
+브라이언 레 : LOVE STORIES
+MUSEUM 209
+[서울시립미술관] 구본창의 항해 | 여성 1인 11:00	2024-01-30
+[MUSEUM 209] 브라이언 레 : LOVE STORIES | 남성 1인 13:00	2024-01-25
+[웩사] 2nd Birthday | 여성 1인 12:00

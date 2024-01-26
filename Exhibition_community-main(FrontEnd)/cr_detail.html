@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커뮤니티 - 관람후기 상세</title>
+
+    <!-- CDN을 사용해서 부트 스트랩 라이브러리 등록 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
+    <style>
+        @font-face {
+            font-family: 'Pretendard-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        * {
+            list-style: none;
+            text-decoration: none;
+            font-family: "Pretendard-Regular";
+        }
+
+        a {
+            text-decoration-line: none;
+        }
+
+        #clear {
+            clear: both;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .headertop {
+            width: 100%;
+            height: 20px;
+            background-color: #1D375F;
+            margin: 0 auto;
+
+        }
+
+        header {
+            position: relative;
+            width: 1240px;
+            height: 120px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        .logo {
+            width: 300px;
+            height: 100px;
+            display: flex;
+            float: left;
+            align-items: center;
+        }
+
+        .menubar {
+            margin: 0 auto;
+            float: left;
+            margin-top: 40px;
+            font-size: 18px;
+
+        }
+
+        .menubar ul {
+            height: 50px;
+            list-style: none;
+        }
+
+        .menubar li {
+            float: left;
+        }
+
+        .menubar a {
+            color: black;
+            display: block;
+            font-weight: normal;
+            line-height: 49px;
+            padding: 1px 25px;
+            text-align: center;
+        }
+
+        .menubar li a:hover,
+        .menubar ul li:hover a {
+            color: #FFA16D;
+        }
+
+        .menubar li:hover ul {
+            display: block;
+        }
+
+        .menubar li:hover li a {
+            background: none;
+        }
+
+        .menubar li ul {
+            background: #1D375F;
+            display: none;
+            height: auto;
+            position: absolute;
+            z-index: 999;
+        }
+
+        .menubar li li a,
+        .menubar li li {
+            background: #1D375F;
+            display: block;
+            float: none;
+            min-width: 135px;
+        }
+
+        .menubar li ul a {
+            display: block;
+            height: 50px;
+            font-size: 14px;
+            font-style: normal;
+            padding: 0px 10px 0px 15px;
+            text-align: left;
+        }
+
+        .menubar li ul a:hover,
+        .menubar li ul li:hover a {
+            background: #636363;
+            border: 0px;
+            color: #ffffff;
+        }
+
+        .login {
+            float: right;
+            margin-right: 20px;
+            margin-top: 55px;
+            font-size: 15px;
+            font-family: "Pretendard-Regular";
+        }
+
+        .login a {
+            color: #000000;
+        }
+
+        .login a:hover {
+            color: #a5a5a5;
+        }
+
+        main {
+            position: relative;
+            width: 1240px;
+            height: auto;
+            margin: 0 auto;
+            /* border: 1px solid red; */
+        }
+
+        .emp1 {
+            width: 1240px;
+            height: 20px;
+            /* border: 1px solid red; */
+        }
+
+        .up {
+            margin-bottom: 20px;
+        }
+
+        .ec {
+            width: 620px;
+            height: 60px;
+            /* border: 1px solid red; */
+            float: left;
+            margin-left: 35px;
+        }
+
+        .ec0 {
+            margin-top: 30px;
+        }
+
+        .ec0 tr td {
+            /* border: 1px solid red; */
+            width: 70px;
+            height: 30px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .ec0 a {
+            color: #000000;
+        }
+
+        .ec0 a:hover {
+            color: #FFA16D;
+        }
+
+        .ec1 {
+
+            width: 300px;
+            font-size: 18px;
+            /* border: 1px solid red; */
+        }
+
+        .search {
+            width: 618px;
+            height: 70px;
+            /* border: 1px solid red; */
+            margin-left: 620px;
+            padding-left: 253px;
+            padding-top: 30px;
+        }
+
+        #searchOption {
+            width: 80px;
+            height: 30px;
+            color: #636363;
+            margin-top: auto;
+            padding-bottom: 1px;
+        }
+
+        #searchbtn {
+            width: 60px;
+            height: 30px;
+            border: 0px;
+            background-color: #1D375F;
+            color: #ffffff;
+        }
+
+        #searchbtn:hover {
+            background-color: #617aa0;
+        }
+
+        .emp2 {
+            height: 100px;
+        }
+
+        .title {
+            display: flex;
+            width: 1150px;
+            height: 60px;
+            border-top: 1px solid silver;
+            border-bottom: 1px solid silver;
+            background-color: #eeeeee;
+            margin: 0 auto;
+        }
+
+        .title h6 {
+            text-align: left;
+            padding-top: 20px;
+            padding-left: 20px;
+        }
+
+        .etc h6 {
+            padding: 15px;
+        }
+
+        .writer,
+        .cnt {
+            width: 70px;
+            height: 50px;
+            text-align: center;
+        }
+
+        .box {
+            width: 1150px;
+            margin: 0 auto;
+        }
+
+        .date {
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            margin-left: 860px;
+        }
+
+        .writer,
+        .date,
+        .cnt {
+            float: left;
+            color: #636363;
+        }
+
+        .content {
+            width: 1150px;
+            height: 400px;
+            border-top: 1px solid silver;
+            border-bottom: 1px solid silver;
+        }
+
+        .content h6 {
+            padding-left: 20px;
+            padding-top: 20px;
+        }
+
+        .btn0 {
+            width: 1150px;
+            padding-top: 20px;
+            margin: 0 auto;
+        }
+
+        .listbtn {
+            width: 70px;
+            height: 30px;
+            background-color: #e0e0e0;
+            float: left;
+        }
+
+        .nextbtn1 {
+            width: 70px;
+            height: 30px;
+            float: left;
+            margin-left: 930px;
+            background-color: #e0e0e0;
+        }
+
+        .nextbtn2 {
+            width: 70px;
+            height: 30px;
+            float: left;
+            margin-left: 10px;
+            background-color: #e0e0e0;
+        }
+
+        .btn0 button {
+            border: none;
+            font-size: 14px
+        }
+
+        .btn0 button:hover {
+            border: none;
+            background-color: #c2c2c2;
+        }
+
+        .commentbox {
+            width: 1150px;
+            padding-top: 20px;
+            margin: 0 auto;
+        }
+
+        .commentcnt {
+            height: 40px;
+            border-top: 1px solid silver;
+            background-color: #f0f0f0;
+            margin-top: 15px;
+            padding-top: 8px;
+            padding-left: 20px;
+        }
+
+        .commentwriter {
+            padding-top: 15px;
+            border-top: 1px solid silver;
+        }
+
+        .commentcontent {
+            padding-bottom: 7.5px;
+            border-bottom: 1px solid silver;
+        }
+        .commentwriter,
+        .commentcontent {
+            padding-left: 20px;
+        }
+
+        .emp3 {
+            height: 150px;
+        }
+
+        footer {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            margin: 0 auto;
+            text-align: left;
+            color: #ffffff;
+            background-color: #1D375F;
+        }
+
+        .address {
+            width: 1240px;
+            margin: 0 auto;
+            padding-top: 30px;
+        }
+
+        .ad1 {
+            color: #cbd7e9;
+        }
+
+        .ad2 {
+            color: #617aa0;
+            font-size: 14px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="headertop"></div>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="img/logo.png"></a>
+        </div>
+        <div class="menubar">
+            <ul class="menuItem">
+                <li><a href="exhibition.html" style="color: #FFA16D;;">전시</a></li>
+                <li>
+                    <a href="community_review.html">커뮤니티</a>
+                    <ul>
+                        <li><a href="community_review.html">관람 후기</a></li>
+                        <li><a href="community_accompany.html">관람 동행</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="login">
+            <ul>
+                <li><a href="login.html">로그인</a></li>
+            </ul>
+        </div>
+
+        <div id="clear"></div>
+
+    </header>
+
+    <div id="clear"></div>
+
+    <main>
+        <div class="emp1"></div>
+        <img class="up" src="img/exhibitionPage_preview/exhibitionUp.png">
+        <div class="ec">
+            <table class="ec0">
+                <tr class="ec1">
+                    <td><a href="community_review.html" style="color: #FFA16D;;">관람 후기</a></td>
+                    <td>|</td>
+                    <td><a href="community_accompany.html">관람 동행</a></td>
+                </tr>
+            </table>
+        </div>
+        <div class="search">
+
+            <!-- 검색 옵션 -->
+            <select id="searchOption">
+                <option value="writer">작성자</option>
+                <option value="posttitle">글 제목</option>
+                <option value="postcontent">글 내용</option>
+                <option value="commentwriter">댓글 작성자</option>
+                <option value="commentcontent">댓글 내용</option>
+            </select>
+
+            <!-- 검색 창 -->
+            <input type="text" id="searchInput" placeholder="검색어를 입력하세요">
+
+            <!-- 검색 버튼 -->
+            <button id="searchbtn" onclick="search()">검색</button>
+
+            <script>
+                function search() {
+                    // 선택된 검색 옵션 가져오기
+                    var searchOption = document.getElementById("searchOption").value;
+
+                    // 입력된 검색어 가져오기
+                    var searchQuery = document.getElementById("searchInput").value;
+
+                    // 실제로 검색을 수행하는 로직을 여기에 추가할 수 있습니다.
+                    // 예를 들면, 검색 옵션과 검색어를 기반으로 서버에 요청을 보내거나,
+                    // 로컬 데이터에서 검색을 수행할 수 있습니다.
+
+                    // 여기에 실제 검색 로직을 추가하세요.
+
+                    // 예시: 콘솔에 결과를 출력
+                    console.log("검색 옵션:", searchOption);
+                    console.log("검색어:", searchQuery);
+                }
+            </script>
+        </div>
+        <hr>
+        <div class="emp2"></div>
+        <div id="clear"></div>
+        <div class="box">
+            <div class="title">
+                <h6>미스치프 전시 다녀왔습니다.</h6>
+            </div>
+            <div class="etc">
+                <div class="writer">
+                    <h6>냥냥</h6>
+                </div>
+                <div class="date">
+                    <h6>2024-01-25</h6>
+                </div>
+                <div class="cnt">
+                    <h6>0</h6>
+                </div>
+            </div>
+            <div id="clear"></div>
+            <div class="content">
+                <h6>글 내용입니다.</h6>
+            </div>
+        </div>
+        <div id="clear"></div>
+        <div class="btn0">
+            <button class="listbtn" onclick="location.href ='community_review.html'">목록으로</button>
+            <!-- <div class="edit"></div>
+            <div class="delete"></div> -->
+            <button class="nextbtn1">이전 글</button>
+            <button class="nextbtn2">다음 글</button>
+        </div>
+        <div id="clear"></div>
+        <div class="commentbox">
+            <div class="commentcnt">
+                <h5><b>댓글(1)</b></h5>
+            </div>
+            <div class="commentwriter">
+                <h6><b>ABC</b></h6>
+            </div>
+            <div class="commentcontent">
+                <h6>댓글 내용입니다.</h6>
+            </div>
+
+        </div>
+
+    </main>
+
+    <div id="clear"></div>
+    <div class="emp3"></div>
+    <footer>
+
+        <div class="address">
+            <a class="ad1" href="#">공지사항</a>
+            <hr>
+            <a class="ad2" href="#">필독 공지</a>
+            <a class="ad2" href="#">이용약관</a>
+            <a class="ad2" href="#">개인정보처리방침</a>
+        </div>
+    </footer>
+</body>
+
+</html>

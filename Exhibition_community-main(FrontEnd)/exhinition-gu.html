@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전시페이지-구본창의 항해</title>
+
+    <!-- CDN을 사용해서 부트 스트랩 라이브러리 등록 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
+    <style>
+        @font-face {
+            font-family: 'Pretendard-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        * {
+            list-style: none;
+            text-decoration: none;
+            font-family: "Pretendard-Regular";
+        }
+
+        a {
+            text-decoration-line: none;
+        }
+
+        #clear {
+            clear: both;
+        }
+
+        .headertop {
+            width: 100%;
+            height: 20px;
+            background-color: #1D375F;
+            margin: 0 auto;
+
+        }
+
+        header {
+            position: relative;
+            width: 1240px;
+            height: 120px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        .logo {
+            width: 300px;
+            height: 100px;
+            display: flex;
+            float: left;
+            align-items: center;
+        }
+
+        .menubar {
+            margin: 0 auto;
+            float: left;
+            margin-top: 40px;
+            font-size: 18px;
+
+        }
+
+        .menubar ul {
+            height: 50px;
+            list-style: none;
+        }
+
+        .menubar li {
+            float: left;
+        }
+
+        .menubar a {
+            color: black;
+            display: block;
+            font-weight: normal;
+            line-height: 49px;
+            padding: 1px 25px;
+            text-align: center;
+        }
+
+        .menubar li a:hover,
+        .menubar ul li:hover a {
+            color: #FFA16D;
+        }
+
+        .menubar li:hover ul {
+            display: block;
+        }
+
+        .menubar li:hover li a {
+            background: none;
+        }
+
+        .menubar li ul {
+            background: #1D375F;
+            display: none;
+            height: auto;
+            position: absolute;
+            z-index: 999;
+        }
+
+        .menubar li li a,
+        .menubar li li {
+            background: #1D375F;
+            display: block;
+            float: none;
+            min-width: 135px;
+        }
+
+        .menubar li ul a {
+            display: block;
+            height: 50px;
+            font-size: 14px;
+            font-style: normal;
+            padding: 0px 10px 0px 15px;
+            text-align: left;
+        }
+
+        .menubar li ul a:hover,
+        .menubar li ul li:hover a {
+            background: #636363;
+            border: 0px;
+            color: #ffffff;
+        }
+
+        .login {
+            float: right;
+            margin-right: 20px;
+            margin-top: 55px;
+            font-size: 15px;
+            font-family: "Pretendard-Regular";
+        }
+
+        .login a {
+            color: #000000;
+        }
+
+        .login a:hover {
+            color: #a5a5a5;
+        }
+
+        main {
+            position: relative;
+            width: 1240px;
+            height: auto;
+            margin: 0 auto;
+            /* border: 1px solid red; */
+        }
+
+        .emp1 {
+            width: 1240px;
+            height: 20px;
+            /* border: 1px solid red; */
+        }
+
+        .up {
+            margin-bottom: 20px;
+        }
+
+        .ec {
+            width: 620px;
+            height: 60px;
+            /* border: 1px solid red; */
+            float: left;
+            margin-left: 35px;
+        }
+
+        .ec0 tr td {
+            /* border: 1px solid red; */
+            width: 70px;
+            height: 30px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .ec0 a {
+            color: #000000;
+        }
+
+        .ec0 a:hover {
+            color: #FFA16D;
+        }
+
+        .ec1 {
+            width: 300px;
+            font-size: 18px;
+            /* border: 1px solid red; */
+        }
+
+        .ec2 {
+            width: 300px;
+            font-size: 18px;
+            /* border: 1px solid red; */
+        }
+
+        .search {
+            width: 618px;
+            height: 70px;
+            /* border: 1px solid red; */
+            margin-left: 620px;
+            padding-left: 253px;
+            padding-top: 30px;
+        }
+
+        #searchOption {
+            width: 80px;
+            height: 30px;
+            color: #636363;
+            margin-top: auto;
+            padding-bottom: 1px;
+        }
+
+        #searchbtn {
+            width: 60px;
+            height: 30px;
+            border: 0px;
+            background-color: #1D375F;
+            color: #ffffff;
+        }
+
+        #searchbtn:hover {
+            background-color: #617aa0;
+        }
+
+        .emp2 {
+            height: 100px;
+        }
+
+        .exhibitionbox {
+            margin: 0 auto;
+            width: 1150px;
+            height: 850px;
+            border: 1px solid #cacaca;
+            padding: 50px;
+        }
+
+        .exhibitionbox img {
+            float: left;
+            padding-right: 50px;
+        }
+
+        .exinfoBox {
+            width: 430px;
+            float: left;
+        }
+
+        .exinfoBox ul,
+        .exinfoBox li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            line-height: 30px;
+        }
+
+        .li1 {
+            width: 100px;
+            float: left;
+            font-size: 16px;
+            color: black;
+        }
+
+        .li2 {
+            width: 400px;
+            font-size: 14px;
+            color: rgb(116, 116, 116);
+        }
+
+        .exinfoBoxhr {
+            width: 460px;
+            float: left;
+        }
+
+        .emp3 {
+            height: 150px;
+        }
+
+        footer {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            margin: 0 auto;
+            text-align: left;
+            color: #ffffff;
+            background-color: #1D375F;
+        }
+
+        .address {
+            width: 1240px;
+            margin: 0 auto;
+            padding-top: 30px;
+        }
+
+        .ad1 {
+            color: #cbd7e9;
+        }
+
+        .ad2 {
+            color: #617aa0;
+            font-size: 14px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="headertop"></div>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="img/logo.png"></a>
+        </div>
+        <div class="menubar">
+            <ul class="menuItem">
+                <li><a href="exhibition.html" style="color: #FFA16D;;">전시</a></li>
+                <li>
+                    <a href="community_review.html">커뮤니티</a>
+                    <ul>
+                        <li><a href="community_review.html">관람 후기</a></li>
+                        <li><a href="community_accompany.html">관람 동행</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="login">
+            <ul>
+                <li><a href="login.html">로그인</a></li>
+            </ul>
+        </div>
+
+        <div id="clear"></div>
+
+    </header>
+
+    <div id="clear"></div>
+
+    <main>
+        <div class="emp1"></div>
+        <img class="up" src="img/exhibitionPage_preview/exhibitionUp.png">
+        <div class="ec">
+            <table class="ec0">
+                <tr class="ec1">
+                    <td><a href="exhibition.html" style="color: #FFA16D;;">현재전시</a></td>
+                    <td>|</td>
+                    <td><a href="exhibitionDday.html">종료예정</a></td>
+                    <td>|</td>
+                    <td><a href="#">무료</a></td>
+                    <td>|</td>
+                    <td><a href="#">어린이</a></td>
+                </tr>
+                <tr class="ec2">
+                    <td><a href="#">전체</a></td>
+                    <td>|</td>
+                    <td><a href="#">서울</a></td>
+                    <td>|</td>
+                    <td><a href="#">경기</a></td>
+                    <td>|</td>
+                    <td><a href="#">기타</a></td>
+                </tr>
+            </table>
+        </div>
+        <div class="search">
+
+            <!-- 검색 옵션 -->
+            <select id="searchOption">
+                <option value="exhibition">전시명</option>
+                <option value="artist">작가</option>
+                <option value="location">지역</option>
+            </select>
+
+            <!-- 검색 창 -->
+            <input type="text" id="searchInput" placeholder="검색어를 입력하세요">
+
+            <!-- 검색 버튼 -->
+            <button id="searchbtn" onclick="search()">검색</button>
+
+            <script>
+                function search() {
+                    // 선택된 검색 옵션 가져오기
+                    var searchOption = document.getElementById("searchOption").value;
+
+                    // 입력된 검색어 가져오기
+                    var searchQuery = document.getElementById("searchInput").value;
+
+                    // 실제로 검색을 수행하는 로직을 여기에 추가할 수 있습니다.
+                    // 예를 들면, 검색 옵션과 검색어를 기반으로 서버에 요청을 보내거나,
+                    // 로컬 데이터에서 검색을 수행할 수 있습니다.
+
+                    // 여기에 실제 검색 로직을 추가하세요.
+
+                    // 예시: 콘솔에 결과를 출력
+                    console.log("검색 옵션:", searchOption);
+                    console.log("검색어:", searchQuery);
+                }
+            </script>
+        </div>
+        <hr>
+        <div class="emp2"></div>
+        <div id="clear"></div>
+
+        <div class="exhibitionbox">
+            <img src="img/exhibition_info/gubonchang.jpg">
+            <div class="info">
+                <div>
+                    <h1 style="font-weight: bold; margin-top: 20px;">구본창의 항해</h1>
+                </div>
+                <hr class="exinfoBoxhr">
+                <div class="exinfoBox">
+                    <ul>
+                        <li>
+                            <ul>
+                                <li class="li1">작가</li>
+                                <li class="li2">구본창</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li class="li1">장소</li>
+                                <li class="li2">서울시립미술관</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li class="li1">주소</li>
+                                <li class="li2">서울 중구 덕수궁길 61</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <ul>
+                                <li class="li1">기간</li>
+                                <li class="li2">2023.12.14.(목) ~ 2024.03.10.(일)</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li class="li1">시간</li>
+                                <li class="li2">10:00 ~ 20:00</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li class="li1">연락처</li>
+                                <li class="li2">02-2124-8868</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li class="li1">홈페이지</li>
+                                <li class="li2"><a style="color: #FFA16D;"
+                                        href="https://sema.seoul.go.kr/kr/whatson/exhibition/detail?exNo=1244356"><b>https://sema.seoul.go.kr</b></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <hr class="exinfoBoxhr">
+                <div class="exinfoBox" style="margin-bottom: 20px;">
+                    <ul>
+                        <li>
+                            <ul>
+                                <li class="li1">관람료</li>
+                                <li class="li2">무료</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="map">
+                    <!-- * 카카오맵 - 지도퍼가기 -->
+                    <!-- 1. 지도 노드 -->
+                    <div id="daumRoughmapContainer1706161021946" class="root_daum_roughmap root_daum_roughmap_landing">
+                    </div>
+
+                    <!--
+                            2. 설치 스크립트
+                            * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+                        -->
+                    <script charset="UTF-8" class="daum_roughmap_loader_script"
+                        src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+                    <!-- 3. 실행 스크립트 -->
+                    <script charset="UTF-8">
+                        new daum.roughmap.Lander({
+                            "timestamp": "1706161021946",
+                            "key": "2huan",
+                            "mapWidth": "460",
+                            "mapHeight": "200"
+                        }).render();
+                    </script>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="clear"></div>
+    <div class="emp3"></div>
+    <footer>
+
+        <div class="address">
+            <a class="ad1" href="#">공지사항</a>
+            <hr>
+            <a class="ad2" href="#">필독 공지</a>
+            <a class="ad2" href="#">이용약관</a>
+            <a class="ad2" href="#">개인정보처리방침</a>
+        </div>
+    </footer>
+</body>
+
+</html>

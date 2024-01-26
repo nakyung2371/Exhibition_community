@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 페이지</title>
+
+    <!-- CDN을 사용해서 부트 스트랩 라이브러리 등록 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
+    <style>
+        @font-face {
+            font-family: 'Pretendard-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        * {
+            list-style: none;
+            text-decoration: none;
+            font-family: "Pretendard-Regular";
+        }
+
+        a {
+            text-decoration-line: none;
+        }
+
+        #clear {
+            clear: both;
+        }
+
+        .headertop {
+            width: 100%;
+            height: 20px;
+            background-color: #1D375F;
+            margin: 0 auto;
+
+        }
+
+        header {
+            position: relative;
+            width: 1240px;
+            height: 120px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        .logo {
+            width: 300px;
+            height: 100px;
+            display: flex;
+            float: left;
+            align-items: center;
+        }
+
+        .menubar {
+            margin: 0 auto;
+            float: left;
+            margin-top: 40px;
+            font-size: 18px;
+
+        }
+
+        .menubar ul {
+            height: 50px;
+            list-style: none;
+        }
+
+        .menubar li {
+            float: left;
+        }
+
+        .menubar a {
+            color: black;
+            display: block;
+            font-weight: normal;
+            line-height: 49px;
+            padding: 1px 25px;
+            text-align: center;
+        }
+
+        .menubar li a:hover,
+        .menubar ul li:hover a {
+            color: #FFA16D;
+        }
+
+        .menubar li:hover ul {
+            display: block;
+        }
+
+        .menubar li:hover li a {
+            background: none;
+        }
+
+        .menubar li ul {
+            background: #1D375F;
+            display: none;
+            height: auto;
+            position: absolute;
+            z-index: 999;
+        }
+
+        .menubar li li a,
+        .menubar li li {
+            background: #1D375F;
+            display: block;
+            float: none;
+            min-width: 135px;
+        }
+
+        .menubar li ul a {
+            display: block;
+            height: 50px;
+            font-size: 14px;
+            font-style: normal;
+            padding: 0px 10px 0px 15px;
+            text-align: left;
+        }
+
+        .menubar li ul a:hover,
+        .menubar li ul li:hover a {
+            background: #636363;
+            border: 0px;
+            color: #ffffff;
+        }
+
+        .login {
+            float: right;
+            margin-right: 20px;
+            margin-top: 55px;
+            font-size: 15px;
+            font-family: "Pretendard-Regular";
+        }
+
+        .login a {
+            color: #000000;
+        }
+
+        .login a:hover {
+            color: #a5a5a5;
+        }
+
+        main {
+            position: relative;
+            width: 1240px;
+            height: 820px;
+            margin: 0 auto;
+            text-align: right;
+        }
+
+        .signupbox {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 90px;
+        }
+
+        .signup-container {
+            border: 1px solid #b0bbcc;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 700px;
+            height: 700px;
+            padding: 30px;
+            /* 변경: 전체 패딩을 조정 */
+        }
+
+        .signup-header {
+            color: #1D375F;
+            font-size: 25px;
+            margin-bottom: 30px;
+            /* 변경: 헤더와 바디 간격 조정 */
+            padding-top: 40px;
+            padding-left: 40px;
+            text-align: left;
+            /* 변경: 텍스트를 좌측 정렬 */
+        }
+
+        .signup-body {
+            margin-top: 70px;
+            /* 변경: 바디 위 간격을 줄임 */
+            padding-left: 40px;
+            text-align: left;
+            /* 변경: 텍스트를 좌측 정렬 */
+
+        }
+
+        .signup-input {
+            width: 30%;
+            /* 변경: 입력 필드의 너비 조정 */
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+            display: inline-block;
+            /* 변경: 인라인 블록 요소로 변경 */
+        }
+
+        .check-button {
+            width: 20%;
+            /* 변경: 버튼의 너비 조정 */
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            background-color: #ff823e;
+            border: 1px solid #FFA16D;
+            color: #fff;
+            /* border-radius: 4px; */
+            font-size: 15px;
+            cursor: pointer;
+            display: inline-block;
+            /* 변경: 인라인 블록 요소로 변경 */
+
+        }
+
+        .signup-button {
+            background-color: #1D375F;
+            color: #fff;
+            padding: 10px 100px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 50px;
+            margin-right: 180px;
+        }
+
+        .signup-button:hover {
+            background-color: #0F1F3A;
+        }
+
+        .gender-input {
+            text-align: left;
+            margin-top: 6px;
+        }
+
+        footer {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            margin: 0 auto;
+            text-align: left;
+            color: #ffffff;
+            background-color: #1D375F;
+        }
+
+        .address {
+            width: 1240px;
+            margin: 0 auto;
+            padding-top: 30px;
+        }
+
+        .ad1 {
+            color: #cbd7e9;
+        }
+
+        .ad2 {
+            color: #617aa0;
+            font-size: 14px;
+            padding-right: 20px;
+        }
+
+        .f1 {
+            width: 100px;
+            margin-right: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="headertop"></div>
+    <header>
+        <div class="logo">
+            <a href="/index.html"><img src="img/logo.png"></a>
+        </div>
+        <div class="menubar">
+            <ul class="menuItem">
+                <li><a href="exhibition.html">전시</a></li>
+                <li>
+                    <a href="community_review.html">커뮤니티</a>
+                    <ul>
+                        <li><a href="community_review.html">관람 후기</a></li>
+                        <li><a href="community_accompany.html">관람 동행</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="login">
+            <ul>
+                <li><a href="login.html">로그인</a></li>
+            </ul>
+        </div>
+
+
+        <div id="clear"></div>
+    </header>
+
+    <div id="clear"></div>
+
+    <main>
+        <div class="signupbox">
+            <div class="signup-container">
+                <div class="signup-header">
+                    <b>회원가입</b>
+                </div>
+                <div class="signup-body">
+                    <form>
+                        <div class="id-input">
+                            <b class="f1" style="margin-right: 26px;">아이디</b>
+                            <input type="text" class="signup-input" placeholder="아이디" required>
+                            <button type="button" class="check-button">중복확인</button>
+                        </div>
+                        <!-- <br> -->
+                        <div class="password-input">
+                            <b class="f1">비밀번호</b>
+                            <input type="password" class="signup-input" placeholder="비밀번호" required>
+                            <input type="password" class="signup-input" placeholder="비밀번호 확인" required>
+                        </div>
+                        <!-- <br> -->
+                        <div>
+                            <b class="f1" style="margin-right: 40px;">이름</b>
+                            <input type="text" class="signup-input" placeholder="이름" required>
+                        </div>
+                        <!-- <br> -->
+                        <div>
+                            <b class="f1" style="margin-right: 26px;">닉네임</b>
+                            <input type="text" class="signup-input" placeholder="닉네임" required>
+                            <button type="button" class="check-button">중복확인</button>
+                        </div>
+                        <!-- <br> -->
+                        <div>
+                            <b class="f1" style="margin-right: 26px;">휴대폰</b>
+                            <input type="text" class="signup-input" placeholder="휴대폰" required>
+                        </div>
+                        <div class="gender-input">
+                            <b class="f1" style="margin-right: 40px;">성별</b>
+                            <input type="radio" name="gender" value="male"> 남성
+                            <input type="radio" name="gender" value="female"> 여성
+                        </div>
+                        <br>
+                    </form>
+                </div>
+                <div id="clear"></div>
+                <div>
+                    <button type="submit" class="signup-button">가입하기</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="clear"></div>
+    <footer>
+        <div class="address">
+            <a class="ad1" href="#">공지사항</a>
+            <hr>
+            <a class="ad2" href="#">필독 공지</a>
+            <a class="ad2" href="#">이용약관</a>
+            <a class="ad2" href="#">개인정보처리방침</a>
+        </div>
+    </footer>
+</body>
+
+</html>

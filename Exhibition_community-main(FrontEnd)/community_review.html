@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커뮤니티 - 관람후기</title>
+
+    <!-- CDN을 사용해서 부트 스트랩 라이브러리 등록 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
+    <style>
+        @font-face {
+            font-family: 'Pretendard-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        * {
+            list-style: none;
+            text-decoration: none;
+            font-family: "Pretendard-Regular";
+        }
+
+        a {
+            text-decoration-line: none;
+        }
+
+        #clear {
+            clear: both;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .headertop {
+            width: 100%;
+            height: 20px;
+            background-color: #1D375F;
+            margin: 0 auto;
+
+        }
+
+        header {
+            position: relative;
+            width: 1240px;
+            height: 120px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        .logo {
+            width: 300px;
+            height: 100px;
+            display: flex;
+            float: left;
+            align-items: center;
+        }
+
+        .menubar {
+            margin: 0 auto;
+            float: left;
+            margin-top: 40px;
+            font-size: 18px;
+
+        }
+
+        .menubar ul {
+            height: 50px;
+            list-style: none;
+        }
+
+        .menubar li {
+            float: left;
+        }
+
+        .menubar a {
+            color: black;
+            display: block;
+            font-weight: normal;
+            line-height: 49px;
+            padding: 1px 25px;
+            text-align: center;
+        }
+
+        .menubar li a:hover,
+        .menubar ul li:hover a {
+            color: #FFA16D;
+        }
+
+        .menubar li:hover ul {
+            display: block;
+        }
+
+        .menubar li:hover li a {
+            background: none;
+        }
+
+        .menubar li ul {
+            background: #1D375F;
+            display: none;
+            height: auto;
+            position: absolute;
+            z-index: 999;
+        }
+
+        .menubar li li a,
+        .menubar li li {
+            background: #1D375F;
+            display: block;
+            float: none;
+            min-width: 135px;
+        }
+
+        .menubar li ul a {
+            display: block;
+            height: 50px;
+            font-size: 14px;
+            font-style: normal;
+            padding: 0px 10px 0px 15px;
+            text-align: left;
+        }
+
+        .menubar li ul a:hover,
+        .menubar li ul li:hover a {
+            background: #636363;
+            border: 0px;
+            color: #ffffff;
+        }
+
+        .login {
+            float: right;
+            margin-right: 20px;
+            margin-top: 55px;
+            font-size: 15px;
+            font-family: "Pretendard-Regular";
+        }
+
+        .login a {
+            color: #000000;
+        }
+
+        .login a:hover {
+            color: #a5a5a5;
+        }
+
+        main {
+            position: relative;
+            width: 1240px;
+            height: auto;
+            margin: 0 auto;
+            /* border: 1px solid red; */
+        }
+
+        .emp1 {
+            width: 1240px;
+            height: 20px;
+            /* border: 1px solid red; */
+        }
+
+        .up {
+            margin-bottom: 20px;
+        }
+
+        .ec {
+            width: 620px;
+            height: 60px;
+            /* border: 1px solid red; */
+            float: left;
+            margin-left: 35px;
+        }
+
+        .ec0 {
+            margin-top: 30px;
+        }
+
+        .ec0 tr td {
+            /* border: 1px solid red; */
+            width: 70px;
+            height: 30px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .ec0 a {
+            color: #000000;
+        }
+
+        .ec0 a:hover {
+            color: #FFA16D;
+        }
+
+        .ec1 {
+
+            width: 300px;
+            font-size: 18px;
+            /* border: 1px solid red; */
+        }
+
+        .search {
+            width: 618px;
+            height: 70px;
+            /* border: 1px solid red; */
+            margin-left: 620px;
+            padding-left: 253px;
+            padding-top: 30px;
+        }
+
+        #searchOption {
+            width: 80px;
+            height: 30px;
+            color: #636363;
+            margin-top: auto;
+            padding-bottom: 1px;
+        }
+
+        #searchbtn {
+            width: 60px;
+            height: 30px;
+            border: 0px;
+            background-color: #1D375F;
+            color: #ffffff;
+        }
+
+        #searchbtn:hover {
+            background-color: #617aa0;
+        }
+
+        .emp2 {
+            height: 100px;
+        }
+
+        .listbox {
+            width: 1150px;
+            margin: 0 auto;
+        }
+
+        .listbox>ul {
+            padding-left: 0;
+        }
+
+        .listTable {
+            padding-left: 0;
+        }
+
+        .listbox>ul>li:first-child {
+
+            text-align: center;
+            height: 60px;
+            vertical-align: middle;
+            line-height: 40px;
+        }
+
+        .listTable>li:first-child>ul>li {
+            border-top: 1px solid silver;
+            ;
+            background-color: #eeeeee;
+            font-weight: bold;
+            text-align: center;
+            font-size: 12pt;
+        }
+
+        .listTable>li>ul {
+            clear: both;
+            padding: 0px auto;
+            position: relative;
+            min-width: 40px;
+            padding-left: 0;
+        }
+
+        .listTable>li>ul>li {
+            float: left;
+            font-size: 11pt;
+            border-bottom: 1px solid silver;
+            vertical-align: baseline;
+        }
+
+        .listTable a{
+            color: #000000;
+        }
+
+        /*번호 열 크기*/
+        .listTable>li>ul>li:first-child {
+            width: 10%;
+        }
+
+        /*제목 열 크기*/
+        .listTable>li>ul>li:first-child+li {
+            width: 45%;
+        }
+
+        /*작성자 열 크기*/
+        .listTable>li>ul>li:first-child+li+li {
+            width: 20%;
+        }
+
+        /*날짜 열 크기*/
+        .listTable>li>ul>li:first-child+li+li+li {
+            width: 15%;
+        }
+
+        /*조회수 열 크기*/
+        .listTable>li>ul>li:first-child+li+li+li+li {
+            width: 10%;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .emp3 {
+            height: 150px;
+        }
+
+        footer {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            margin: 0 auto;
+            text-align: left;
+            color: #ffffff;
+            background-color: #1D375F;
+        }
+
+        .address {
+            width: 1240px;
+            margin: 0 auto;
+            padding-top: 30px;
+        }
+
+        .ad1 {
+            color: #cbd7e9;
+        }
+
+        .ad2 {
+            color: #617aa0;
+            font-size: 14px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="headertop"></div>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="img/logo.png"></a>
+        </div>
+        <div class="menubar">
+            <ul class="menuItem">
+                <li><a href="exhibition.html" style="color: #FFA16D;;">전시</a></li>
+                <li>
+                    <a href="community_review.html">커뮤니티</a>
+                    <ul>
+                        <li><a href="community_review.html">관람 후기</a></li>
+                        <li><a href="community_accompany.html">관람 동행</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="login">
+            <ul>
+                <li><a href="login.html">로그인</a></li>
+            </ul>
+        </div>
+
+        <div id="clear"></div>
+
+    </header>
+
+    <div id="clear"></div>
+
+    <main>
+        <div class="emp1"></div>
+        <img class="up" src="img/exhibitionPage_preview/exhibitionUp.png">
+        <div class="ec">
+            <table class="ec0">
+                <tr class="ec1">
+                    <td><a href="community_review.html" style="color: #FFA16D;;">관람 후기</a></td>
+                    <td>|</td>
+                    <td><a href="community_accompany.html">관람 동행</a></td>
+                </tr>
+            </table>
+        </div>
+        <div class="search">
+
+            <!-- 검색 옵션 -->
+            <select id="searchOption">
+                <option value="writer">작성자</option>
+                <option value="posttitle">글 제목</option>
+                <option value="postcontent">글 내용</option>
+                <option value="commentwriter">댓글 작성자</option>
+                <option value="commentcontent">댓글 내용</option>
+            </select>
+
+            <!-- 검색 창 -->
+            <input type="text" id="searchInput" placeholder="검색어를 입력하세요">
+
+            <!-- 검색 버튼 -->
+            <button id="searchbtn" onclick="search()">검색</button>
+
+            <script>
+                function search() {
+                    // 선택된 검색 옵션 가져오기
+                    var searchOption = document.getElementById("searchOption").value;
+
+                    // 입력된 검색어 가져오기
+                    var searchQuery = document.getElementById("searchInput").value;
+
+                    // 실제로 검색을 수행하는 로직을 여기에 추가할 수 있습니다.
+                    // 예를 들면, 검색 옵션과 검색어를 기반으로 서버에 요청을 보내거나,
+                    // 로컬 데이터에서 검색을 수행할 수 있습니다.
+
+                    // 여기에 실제 검색 로직을 추가하세요.
+
+                    // 예시: 콘솔에 결과를 출력
+                    console.log("검색 옵션:", searchOption);
+                    console.log("검색어:", searchQuery);
+                }
+            </script>
+        </div>
+        <hr>
+        <div class="emp2"></div>
+        <div class="listbox">
+            <ul>
+                <li>
+                    <ul class="listTable">
+                        <li>
+                            <ul>
+                                <li>번호</li>
+                                <li>제목</li>
+                                <li>작성자</li>
+                                <li>날짜</li>
+                                <li>조회수</li>
+                            </ul>
+                        <li>
+                            <ul>
+                                <li>15</li>
+                                <li class="left"><a href="cr_detail.html">미스치프 전시 다녀왔습니다.</a></li>
+                                <li>2024-01-25</li>
+                                <li>냥냥</li>
+                                <li>0</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>14</li>
+                                <li class="left"><a href="#">미스치프 전시 다녀왔습니다.</a></li>
+                                <li>2024-01-25</li>
+                                <li>냥냥</li>
+                                <li>0</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>13</li>
+                                <li class="left"><a href="#">미스치프 전시 다녀왔습니다.</a></li>
+                                <li>2024-01-25</li>
+                                <li>냥냥</li>
+                                <li>0</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>12</li>
+                                <li class="left"><a href="#">미스치프 전시 다녀왔습니다.</a></li>
+                                <li>2024-01-25</li>
+                                <li>냥냥</li>
+                                <li>0</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>11</li>
+                                <li class="left"><a href="#">미스치프 전시 다녀왔습니다.</a></li>
+                                <li>2024-01-25</li>
+                                <li>냥냥</li>
+                                <li>0</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>10</li>
+                                <li class="left"><a href="#">미스치프 전시 다녀왔습니다.</a></li>
+                                <li>2024-01-25</li>
+                                <li>냥냥</li>
+                                <li>0</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <ul>
+                                <li>9</li>
+                                <li class="left"><a href="#">위너브러더스 100주년 후기!</a></li>
+                                <li>2024-01-23</li>
+                                <li>가나다라</li>
+                                <li>0</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <ul>
+                                <li>8</li>
+                                <li class="left"><a href="#">서울시립미술관 구본창의 항해 관람 후기</a></li>
+                                <li>2024-01-22</li>
+                                <li>뿌링클</li>
+                                <li>0</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <ul>
+                                <li>7</li>
+                                <li class="left"><a href="#">미셸 들라크루아 전시 보고 왔어요</a></li>
+                                <li>2024-01-22</li>
+                                <li>예술인</li>
+                                <li>0</li>
+                            </ul>
+                        <li>
+
+                        <li>
+                            <ul>
+                                <li>6</li>
+                                <li class="left"><a href="#">부산 요시고 사진전</a></li>
+                                <li>2024-01-22</li>
+                                <li>아아아</li>
+                                <li>0</li>
+                            </ul>
+                        <li>
+
+                        <li>
+                            <ul>
+                                <li>5</li>
+                                <li class="left"><a href="#">브라이언 레 - LOVE STORIES</a></li>
+                                <li>2024-01-21</li>
+                                <li>abcd</li>
+                                <li>0</li>
+                            </ul>
+                        <li>
+
+                        <li>
+                            <ul>
+                                <li>4</li>
+                                <li class="left"><a href="#">인트리깅</a></li>
+                                <li>2024-01-21</li>
+                                <li>1일1전시</li>
+                                <li>0</li>
+                            </ul>
+                        <li>
+
+                        <li>
+                            <ul>
+                                <li>3</li>
+                                <li class="left"><a href="#">녹색갈증 전시 관람 후기</a></li>
+                                <li>2024-01-21</li>
+                                <li>김김김</li>
+                                <li>0</li>
+                            </ul>
+                        <li>
+
+                        <li>
+                            <ul>
+                                <li>2</li>
+                                <li class="left"><a href="#">우연과 필연</a></li>
+                                <li>2024-01-21</li>
+                                <li>나나나</li>
+                                <li>0</li>
+                            </ul>
+                        <li>
+
+                        <li>
+                            <ul>
+                                <li>1</li>
+                                <li class="left"><a href="#">누군가의 이야기 보고왔습니다.</a></li>
+                                <li>2024-01-21</li>
+                                <li>경경경</li>
+                                <li>0</li>
+                            </ul>
+                        <li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <div id="clear"></div>
+    <div class="emp3"></div>
+    <footer>
+
+        <div class="address">
+            <a class="ad1" href="#">공지사항</a>
+            <hr>
+            <a class="ad2" href="#">필독 공지</a>
+            <a class="ad2" href="#">이용약관</a>
+            <a class="ad2" href="#">개인정보처리방침</a>
+        </div>
+    </footer>
+</body>
+
+</html>
